@@ -1,0 +1,35 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+ext.DESCRIPTION = "Extension library of Moshi just for Kotlin"
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    api 'com.squareup.moshi:moshi-kotlin:1.8.0'
+    kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.8.0'
+
+    testImplementation 'junit:junit:4.12'
+    testApi 'com.squareup.moshi:moshi-kotlin:1.8.0'
+    kaptTest 'com.squareup.moshi:moshi-kotlin-codegen:1.8.0'
+}
+
+apply from: 'bintray.gradle'
